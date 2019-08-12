@@ -1,7 +1,7 @@
 <?php
 
 Route::get('aa', function () {
-    return view('welcome');
+   echo $a=Hash::make('aa');
 });
 // Route::get('/login', function () {
 //     return view('login');
@@ -11,12 +11,18 @@ Route::get('aa', function () {
 //show方法
 Route::any('login', 'UserController@login');
 Route::any('user', 'UserController@index');
-Route::any('shop', 'ShopController@shopping');
-Route::any('demo', 'ShopController@demo');
-Route::any('floor', 'ShopController@floor');
-Route::any('floorshow', 'ShopController@floorshow');
 Route::any('welcome', 'PostController@welcome');
+Route::any('boot', 'LoginController@boot');
 
+//Route::any('shop', 'ShopController@shopping');
+//Route::any('demo', 'ShopController@demo');
+//Route::any('floor', 'ShopController@floor');
+//Route::any('floorshow', 'ShopController@floorshow');
+//Route::any('goods', 'ShopController@goods');
+//Route::any('price', 'ShopController@price');
+//Route::any('user1', 'ShopController@user1');
+//Route::any('usershow', 'ShopController@usershow');
+//Route::any('alogin', 'AuthController@login');
 
 Route::group(['middleware' => App\Http\Middleware\CheckToken::class,], function () {
 Route::any('show', 'UserController@show');

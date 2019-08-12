@@ -16,3 +16,28 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('users/{user}', function (App\User $user) {
+    dd($user);
+});
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');//login登陆页面
+    Route::post('logout', 'AuthController@logout');//退出
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');//user表 --member_user页面
+    Route::post('add', 'CartController@add');//详情页-添加到购物车 --product页面
+    Route::post('buycar_show', 'CartController@buycar_show');//购物车页面展示-第1页 --buycar页面
+});
+//index页面 商品展示
+Route::post('shop', 'ShopController@shop');
+Route::post('floor', 'ShopController@floor');
+Route::post('floorshow', 'ShopController@floorshow');
+//product页面
+Route::get('goods', 'ShopController@goods');
+Route::get('price', 'ShopController@price');
