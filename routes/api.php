@@ -32,7 +32,7 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');//user表 --member_user页面
     Route::post('add', 'CartController@add');//详情页-添加到购物车 --product页面
-    Route::post('buycar_show', 'CartController@buycar_show');//购物车页面展示-第1页 --buycar页面
+    Route::post('buycar_show', 'CartController@buycar_show');//购物车页面展示-第1页--buycar页面
     //buycar-数量加减
     Route::post('Up', 'CartController@Update');
     Route::post('check', 'CartController@check');
@@ -44,7 +44,11 @@ Route::group([
     Route::post('buycar_two', 'CartController@buycar_two');
     Route::post('buycar_two1', 'CartController@buycar_two1');
     Route::post('addorder', 'CartController@addorder');
+    //支付页面
+
 });
+Route::get('index', 'PayController@index');
+Route::get('return', 'PayController@return');
 //index页面 商品展示
 Route::post('shop', 'ShopController@shop');
 Route::post('floor', 'ShopController@floor');
@@ -52,4 +56,6 @@ Route::post('floorshow', 'ShopController@floorshow');
 //product页面
 Route::get('goods', 'ShopController@goods');
 Route::get('price', 'ShopController@price');
+//支付页面
+Route::get('notify', 'PayController@notify');
 

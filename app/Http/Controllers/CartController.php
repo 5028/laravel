@@ -167,7 +167,7 @@ class CartController extends Controller
             $name=$value['name'];
             $phone=$value['phone'];
             $address11=$address1.$address2;
-            DB::insert("insert into Suborder (`order_id`,`address`,`time`,`u_id`,`name`,`phone`,`price`)  values ( '$orderSn','$address11','$time','$u_id','$name','$phone','$totalp');");
+            DB::insert("insert into Suborder (`order_id`,`address`,`time`,`u_id`,`stutas`)  values ( '$orderSn','$address11','$time','$u_id','0');");
         }
         foreach ($cade as $key=>$value) {
             $name1=$value[0]['name'];
@@ -177,8 +177,7 @@ class CartController extends Controller
             $id=$value[0]['goods_id'];
             DB::insert("insert into order1 (`h_goods`,`h_type`,`price`,`num`,`h_id`,`suborder_id`)  values ( '$name1','$attr_name','$price','$newber','$id','$orderSn');");
         }
-
-       return response()->json(['data' =>$orderSn,]);
+       return response()->json(['data' =>$orderSn,'price' =>$totalp,]);
     }
 
 }
